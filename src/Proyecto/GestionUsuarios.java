@@ -2,7 +2,7 @@ package Proyecto;
 import java.util.Scanner;
 
 public class GestionUsuarios {
-    nuevoUsuario nu = new nuevoUsuario();
+    dni nu = new dni();
     Scanner lector = new Scanner(System.in);
     private boolean fin = false;
     public static void main(String[] args) {
@@ -63,7 +63,7 @@ public class GestionUsuarios {
         return numVal;
     }
     public void newUser(){
-        nu.altaCliente();
+        nu.altaUsuari();
     }
     public void  viewUser(){
 
