@@ -1,10 +1,11 @@
 package Proyecto;
 
-
-import java.util.Arrays;
 import java.util.Scanner;
 
-public class dni {
+/*++++++++++ Introduccion de datos de un usuario nuevo ++++++++++++++++*/
+
+public class IntroduccionDatos {
+    ordenarClients oc = new ordenarClients();
     int[] vectorcantidad = new int[1];
     Scanner lector = new Scanner(System.in);
     int[][] codigo = new int[100][2];
@@ -13,7 +14,7 @@ public class dni {
 
     public String altaCliente() {
         String[] vector = {"T", "R", "W", "A", "G", "H", "Y", "F", "P", "D", "X", "B", "N", "J", "Z", "S", "Q", "V", "H", "L", "C", "K", "E"};
-        dni documentacion = new dni();
+        IntroduccionDatos documentacion = new IntroduccionDatos();
         System.out.println("Introduce el DNI sin la letra");
         int nif = documentacion.validarDNI();
         int modulo = nif % 23;
@@ -76,7 +77,7 @@ public class dni {
 
     public void altaUsuari() {
         GestionUsuarios usus = new GestionUsuarios();
-        ordenarClients oc = new ordenarClients();
+
         int cantidad;
         System.out.println("¿Cuantos usuarios quieres dar de alta?");
         cantidad = lector.nextInt();
@@ -86,6 +87,8 @@ public class dni {
         }
         vectorcantidad[0] = cantidad + vectorcantidad[0];
         for (int i = (vectorcantidad[0] - cantidad); i < vectorcantidad[0]; i++) {
+            System.out.println("Datos del "+(i+1)+"º usuario");
+            System.out.println();
             for (int j = 0; j < datosCliente[i].length; j++) {
                 System.out.println("Introduce " + vector[j]);
                 if (j == 0) {
@@ -94,12 +97,13 @@ public class dni {
                 } else if (j == 3) {
                     datosCliente[i][j] = pasarNumero();
                 } else {
-                    datosCliente[i][j] = lector.next().toLowerCase();
+                    datosCliente[i][j] = lector.next();
                 }
                 if (j == 1) {
                     codigo[i][j] = 0;
                 }
             }
+            System.out.println();
         }
         for (int i = 0; i < datosCliente.length; i++) {
             for (int j = 0; j < datosCliente[i].length; j++) {
@@ -110,7 +114,8 @@ public class dni {
             }
             System.out.println();
         }
-        oc.ordenar(codigo, datosCliente);
+
+        //oc.ordenar(codigo, datosCliente);
         for (int i = 0; i < datosCliente.length; i++) {
             for (int j = 0; j < datosCliente[i].length; j++) {
                 System.out.print(datosCliente[i][j] + " ");
@@ -120,6 +125,18 @@ public class dni {
             }
             System.out.println();
         }
+    }
+    public void visualizarCliente(){
+        mostrarDatosCliente mdc = new mostrarDatosCliente();
+        mdc.mostrarCliente(datosCliente, codigo);
+    }
+    public void bajaDeCliente(){
+        bajaCliente bc = new bajaCliente();
+        bc.darBaja(datosCliente, codigo);
+    }
+    public void recuCliente(){
+        recuperarCliente rc = new recuperarCliente();
+        rc.recuperarDatosUsuario(datosCliente, codigo);
     }
 }
 

@@ -1,8 +1,11 @@
 package Proyecto;
 import java.util.Scanner;
 
+/*++++++++++ MENU DEL PROGRAMA (FICHERO PRINCIPAL) ++++++++++++++++*/
+
 public class GestionUsuarios {
-    dni nu = new dni();
+
+    IntroduccionDatos nu = new IntroduccionDatos();
     Scanner lector = new Scanner(System.in);
     private boolean fin = false;
     public static void main(String[] args) {
@@ -27,6 +30,7 @@ public class GestionUsuarios {
                 "5. Ordenar usuarios\n" +
                 "6. Buscar usuario\n" +
                 "7. Salir");
+
     }
     public void tratarOpcion() {
         int num = validarNum();
@@ -66,13 +70,13 @@ public class GestionUsuarios {
         nu.altaUsuari();
     }
     public void  viewUser(){
-
+        nu.visualizarCliente();
     }
     public void downUser(){
-
+        nu.bajaDeCliente();
     }
     public void resurrectUser(){
-
+        nu.recuCliente();
     }
     public void sortUser(){
 
