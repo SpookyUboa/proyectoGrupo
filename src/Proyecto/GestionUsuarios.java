@@ -2,7 +2,9 @@ package Proyecto;
 import java.util.Scanner;
 
 public class GestionUsuarios {
-    nuevoUsuario nu = new nuevoUsuario();
+
+    IntroduccionDatos nu = new IntroduccionDatos();
+    int x = 0;
     Scanner lector = new Scanner(System.in);
     private boolean fin = false;
     public static void main(String[] args) {
@@ -44,7 +46,7 @@ public class GestionUsuarios {
         }else if (num == 6){
             searchUser();
         }else{
-            System.out.println("Gracias por usar el gestor de usuarios de Gymtb");
+            System.out.println("Gracias por usar el gestor de usuarios de Gyºmtb");
             fin = true;
         }
     }
@@ -63,21 +65,52 @@ public class GestionUsuarios {
         return numVal;
     }
     public void newUser(){
-        nu.altaCliente();
+        nu.altaUsuari();
     }
     public void  viewUser(){
-
+        nu.visualizarCliente();
     }
     public void downUser(){
-
+        nu.bajaDeCliente();
     }
     public void resurrectUser(){
-
+        nu.recuCliente();
     }
     public void sortUser(){
-
+        System.out.println("Cómo deseas ordenar la lista?\n 1 - Por DNI\n 2 - Por nombre\n 3 - Por apellido");
+        try{
+            x = lector.nextInt();
+            if(x > 0 && x <= 3) nu.ordenaC(x);
+            else System.out.println("Opción incorrecta");
+        }
+        catch(Exception e){
+            System.out.println("Opción incorrecta");
+            lector.next();
+        }
     }
     public void searchUser(){
 
+        /*
+
+        PROCEDIMIENTO
+
+        searchUser recibe un int x. Luego llama a nu.ordenaC(x) (NO DEBE SACAR LA LISTA). Después recibe ese mismo int
+        como parámetro para buscar por el mismo campo. Hay que crear una opción nueva en el menú que muestre toda la lista
+        ya que ordenaClients ya no lo hará.
+
+         */
+
+        System.out.println("Por qué campo quieres buscar?\n 1 - Por DNI\n 2 - Por nombre\n 3 - Por apellido");
+        try{
+            x = lector.nextInt();
+            if(x > 0 && x <= 3) nu.ordenaC(x);
+            else System.out.println("Opción incorrecta");
+        }
+        catch(Exception e){
+            System.out.println("Opción incorrecta");
+            lector.next();
+        }
+
+       // nu.busca(x);
     }
 }
