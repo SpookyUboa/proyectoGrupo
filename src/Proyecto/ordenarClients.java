@@ -3,15 +3,15 @@ import java.util.Scanner;
 
 public class ordenarClients {
     public void ordenar(int[][] codigos, String[][] clientes, int f) {
-        validarNumero lp = new validarNumero();
+        validarEntrada lp = new validarEntrada();
         int[] aux1 = new int[2];
         String[] aux2 = new String[5];
-        Scanner read = new Scanner(System.in);
+        Scanner lector = new Scanner(System.in);
         int opcion = 0;
         System.out.println("Cómo deseas ordenar la lista?\n 1 - Por DNI\n 2 - Por nombre\n 3 - Por apellido");
-        opcion = lp.validarNum(); //le he metido validación de numero gente
 
-        switch(opcion){
+
+        switch(opcion = validarEntrada.validarInt()){
             case 1:
                 for (int i = 0; i < clientes.length; i++) {
                     for (int j = i + 1; j < clientes.length; j++) {
@@ -85,7 +85,7 @@ public class ordenarClients {
                 System.out.println(clientes[i][0] + "  " + clientes[i][1] + "  " + clientes[i][2] + "  " + clientes[i][3] + "  " + clientes[i][4] + "  " + codigos[i][0] + "  " + codigos[i][1]);
             }
         }
-        read.nextLine();
+        lector.nextLine();
     }
 }
 

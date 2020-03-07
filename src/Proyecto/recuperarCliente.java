@@ -7,7 +7,7 @@ public class recuperarCliente {
     public void recuperarDatosUsuario(String[][] datosCliente, int[][] codigo) {
 
         Scanner lector = new Scanner(System.in);
-        validarNumero vn = new validarNumero();
+        validarEntrada vn = new validarEntrada();
         SegundaOportunidad so = new SegundaOportunidad();
 
 
@@ -16,7 +16,7 @@ public class recuperarCliente {
         boolean dani = false;
         while (!dani) {
             System.out.println("Introduce el ID de cliente a recuperar sus datos");
-            int id = vn.validarNum() - 1;  // Es -1 porqué el vector empieza desde 0
+            int id = vn.validarInt() - 1;  // Es -1 porqué el vector empieza desde 0
             int[] fila = codigo[id];
             String[] filaClient = datosCliente[id];
             if (codigo[id][1] == 0 && codigo[id][0] != 0) {

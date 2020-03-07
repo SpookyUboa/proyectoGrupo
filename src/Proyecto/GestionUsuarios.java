@@ -4,6 +4,7 @@ import java.util.Scanner;
 public class GestionUsuarios {
 
     IntroduccionDatos nu = new IntroduccionDatos();
+    validarEntrada ve = new validarEntrada();
     int x = 0;
     Scanner lector = new Scanner(System.in);
     private boolean fin = false;
@@ -52,11 +53,11 @@ public class GestionUsuarios {
     }
     public int validarNum(){
         int numVal;
-        while (!lector.hasNextInt()){
-            System.out.println("Valor no válido");
+        /*while (!lector.hasNextInt()){
+            System.out.println("Valor no válido, introduce un numero de telefono de 9 digitos por favor");
             lector.next();
-        }
-        numVal = lector.nextInt();
+        }*/
+        numVal = validarEntrada.validarInt();
 
         if (numVal <= 0 || numVal > 7){
             System.out.println("Opción válida");

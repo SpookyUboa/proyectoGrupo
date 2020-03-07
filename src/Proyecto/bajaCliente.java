@@ -5,14 +5,17 @@ import java.util.Scanner;
 public class bajaCliente {
     Scanner lector = new Scanner(System.in);
     public void darBaja(String[][] datosCliente, int[][] codigo) {
-        validarNumero vn = new validarNumero();
+        mostrarDatosCliente md = new mostrarDatosCliente();
+        validarEntrada vn = new validarEntrada();
         SegundaOportunidad so = new SegundaOportunidad();
 
         String[] titulos = {"ID", "Estado Actual", "DNI", "Nombre", "Apelldio", "Teléfono", "Calle"};
         boolean stop=false;
         while (!stop) {
             System.out.println("Introduce el ID de cliente a dar de baja");
-            int id = vn.validarNum()-1;  // Es -1 porqué el vector empieza desde 0
+
+
+            int id = validarEntrada.validarInt()-1;  // Es -1 porqué el vector empieza desde 0
             int[] fila = codigo[id];
             String[] filaClient = datosCliente[id];
 
@@ -65,7 +68,6 @@ public class bajaCliente {
                 System.out.println("No existe ningún usuario con ese ID");
                 stop=so.tractarOpcio(stop);
             }
-
         }
     }
 }

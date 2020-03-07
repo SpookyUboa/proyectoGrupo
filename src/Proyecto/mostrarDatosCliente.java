@@ -1,5 +1,6 @@
 package Proyecto;
 
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 /*++++++++++ ESTE FICHERO PERMITE VISUALIZAR A UN USUARIO EN CONCRETO HECHO!!!!!++++++++++++++++*/
@@ -8,7 +9,7 @@ public class mostrarDatosCliente {
     Scanner lector = new Scanner(System.in);
 
     public void mostrarCliente(String[][] datosCliente, int[][] codigo) {
-        validarNumero vn = new validarNumero();
+        validarEntrada vn = new validarEntrada();
 
 
         String[] titulos = {"ID", "Estado Actual", "DNI", "Nombre", "Apellidos", "Teléfono", "Calle"};
@@ -16,7 +17,7 @@ public class mostrarDatosCliente {
         while (!stop) {
 
             System.out.println("Introduce el ID de cliente a visualizar");
-            int id = vn.validarNum() - 1;  // Es -1 porqué el vector empieza desde 0
+            int id = validarEntrada.validarInt() - 1;  // Es -1 porqué el vector empieza desde 0
             int[] fila = codigo[id];
             String[] filaClient = datosCliente[id];
 
@@ -27,7 +28,11 @@ public class mostrarDatosCliente {
             } else if (codigo[id][0] == 0) {
                 System.out.println("No existe ningún usuario con ese ID");
 
-            } else {
+            } else {  // si no hay ningun problema con estos dos bucles mostrara todos los datos del usuario
+
+                System.out.println("****** DATOS DEL USUARIO *******");
+                System.out.println();
+
                 for (int j = 0; j < fila.length; j++) {
                     System.out.print(titulos[j] + ": ");
                     System.out.println(fila[j]);
@@ -35,7 +40,7 @@ public class mostrarDatosCliente {
                 for (int i = 0; i < filaClient.length; i++) {
                     for (int j = 2; j < titulos.length; j++) {
                         System.out.print(titulos[j] + ": ");
-                        System.out.println(filaClient[i++]); // i++ porué así imprime todos los valores y no peta
+                        System.out.println(filaClient[i++]); // i++ porqué así imprime todos los valores y no peta
                     }
                 }
                 System.out.println();

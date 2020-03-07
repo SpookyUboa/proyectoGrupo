@@ -9,6 +9,7 @@ public class IntroduccionDatos {
     int[][] codigo = new int[100][2];
     String[][] datosCliente = new String[100][5];
     ordenarClients oc = new ordenarClients();
+    validarEntrada ve = new validarEntrada();
     int[] vectorcantidad = new int[1];
     Scanner lector = new Scanner(System.in);
     String[] vector = {"DNI", "Nombre", "Apellido", "Telefono", "Dirección"};
@@ -28,11 +29,11 @@ public class IntroduccionDatos {
 
         int nif, goodNif, nif2;
         int contador = 0;
-        while (!lector.hasNextInt()) {
+       /* while (!lector.hasNextInt()) { // al usar el metodo de validacion de int no necesitamos este while y nos ahorramos memoria
             System.out.println("Ha de tener 8 dígitos");
             lector.next();
-        }
-        nif = lector.nextInt();
+        }*/
+        nif = validarEntrada.validarInt();
         nif2 = nif;
         while (nif != 0) {
             nif = nif / 10;
@@ -50,11 +51,11 @@ public class IntroduccionDatos {
     public int validarTelefono() {
         int Phone, goodPhone, Phone2;
         int contador = 0;
-        while (!lector.hasNextInt()) {
+        /*while (!lector.hasNextInt()) { // al usar el metodo de validacion de int no necesitamos este while y nos ahorramos memoria
             System.out.println("Ha de tener 9 dígitos");
             lector.next();
-        }
-        Phone = lector.nextInt();
+        }*/
+        Phone = validarEntrada.validarInt();
         Phone2 = Phone;
         while (Phone != 0) {
             Phone = Phone / 10;
@@ -81,10 +82,12 @@ public class IntroduccionDatos {
 
         int cantidad;
         System.out.println("¿Cuantos usuarios quieres dar de alta?");
-        cantidad = lector.nextInt();
+        cantidad = validarEntrada.validarInt();
         if (vectorcantidad[0] + cantidad > 100) {
             System.out.println("No puede pasarte");
-            usus.inici();
+
+            System.out.println();
+            altaUsuari(); // si elige una opción que no esta dentro del rango el metodo se volvera a ejecutar
         }
         vectorcantidad[0] = cantidad + vectorcantidad[0];
         for (int i = (vectorcantidad[0] - cantidad); i < vectorcantidad[0]; i++) {
@@ -114,7 +117,8 @@ public class IntroduccionDatos {
 
         String[] titulos = {"DNI", "Nombre", "Apellido", "Teléfono", "Calle" ,"ID", "Estado Actual"};
 
-        System.out.println("****** BASE DE DATOS DE CLIENTES ******");
+        System.out.println("****** BASE DE DATOS DE CLIENTES *************");
+        System.out.println();
         for (int j = 0; j < titulos.length; j++) {
             System.out.print(titulos[j] + " ");
         }
@@ -131,6 +135,7 @@ public class IntroduccionDatos {
                 System.out.println();
             }
         }
+        System.out.println();
     }
     public void visualizarCliente(){
         mostrarDatosCliente mdc = new mostrarDatosCliente();
